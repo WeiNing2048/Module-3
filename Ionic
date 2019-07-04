@@ -1,0 +1,98 @@
+1. npm install -g ionic
+2. ionic start myApp blank
+3. cd myApp
+4. sudo ionic serve
+5. sudo ionic serve --lab //check Android & IOS version interface
+
+--> home.page.ts, then home.page.html
+counter = 0
+  incrementPressed() {
+    this.counter++;
+  }
+
+  import { ToastController } from "@ionic/angular";
+  constructor(public toastController: ToastController)
+
+  //put "async"
+  const toast = await this.toastController.create({
+        message: "Your settings have been saved.",
+        duration: 2000
+      });
+      toast.present();
+
+
+--> home.page.html
+<h1 style="text-align: center; size: 17px">{{ counter }}</h1>
+
+ion-picker --> more (rolling)
+ion-action-sheet --> less
+
+! -> means terbalik
+
+1. ionic g page add
+2. import --> home.page.ts
+import { ModalController } from "@ionic/angular";
+import { AddPage } from "../add/add.page";
+3. inject --> home.page.ts
+constructor(public modalController: ModalController) {}
+4. implement --> home.page.ts
+async presentModal() {
+    const modal = await this.modalController.create({
+      component: AddPage
+    });
+    return await modal.present();
+5. import --> home.module.ts (home.page.html (click)=presentModal, home.page.ts component:AddPage)
+import { AddPage } from "../add/add.page";
+@NgModule({
+declarations: [HomePage, AddPage],
+entryComponents: [AddPage]
+})
+6. --> add.page.html
+<ion-button (click)="closePressed()"></ion-button>
+<ion-button color="dark" (click)="addPressed()">Add </ion-button>
+7. --> add.page.ts
+import { ModalController } from "@ionic/angular";
+import { ToastController } from "@ionic/angular";
+data = {
+    name: "",
+    place: "",
+    description: "",
+    completed: false
+  };
+constructor(
+    private modalCtrl: ModalController,
+    private toastCtrl: ToastController
+  )
+closePressed() {
+    // using the injected ModalController this page
+    // can "dismiss" itself and optionally pass back data
+    this.modalCtrl.dismiss();
+  }
+
+  async addPressed() {
+    if (this.data.name) {
+      this.modalCtrl.dismiss({
+        newtodo: this.data
+      });
+    } else {
+      let toast = await this.toastCtrl.create({
+        duration: 2000,
+        message: "Please enter name"
+      });
+      toast.present();
+    }
+  }
+8. --> home.page.ts (remove return await modal.present();)
+ modal.present();
+    const { data } = await modal.onWillDismiss();
+    console.log(data);
+    this.todos.push(data.newtodo);
+
+
+1. ionic g page detail
+2. import --> home.page.html
+<ion-item *ngFor="let todo of todos" routerlink="/detail/{{ todo.id }}">
+3. --> app-routing.module.ts
+path: "detail/:id",
+4. --> detail.page.html
+card--> big image + description, routerlink

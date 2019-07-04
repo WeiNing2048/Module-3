@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Weather Forecast</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ message }}</h1>
+      <button v-on:click="callSwapi('data')">Check</button>
+      <ul v-for="data in weather">
+        <li>{{ data }}</li>
+      </ul>
+      <script>
+        var app = new Vue({
+          el: "#app",
+          data: {
+            message: "Weather Forecast",
+            weather: []
+          },
+          methods: {
+            callSwapi(data) {
+              fetch(
+                "http://api.openweathermap.org/data/2.5/forecast?id=519188&APPID=48646ec1458091c3f88d49edcbf5887d"
+              ).then(resp => {
+                resp.json().then(jsonData => {
+                  this.weather = jsonData;
+                });
+              });
+            }
+          },
+          mounted() {
+            fetch(
+              "http://api.openweathermap.org/data/2.5/forecast?id=519188&APPID=48646ec1458091c3f88d49edcbf5887d",
+              {
+                method: "get"
+              }
+            ).then(resp => {
+              resp.json().then(jsonData => {
+                this.weather = jsonData;
+              });
+            });
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>
+<!--
+    mounted() {
+    fetch(
+      "http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=48646ec1458091c3f88d49edcbf5887d"
+    ).then(resp => {
+      resp.json().then(data => {
+        this.weather = data.results;
+      });
+    });
+  }-->

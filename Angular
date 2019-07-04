@@ -1,0 +1,216 @@
+INSTALL ANGULAR
+
+1. sudo npm install -g @angular/cli
+2. ng new my-dream-app
+3. route to angular > yes
+4. stylesheet > CSS
+5. cd my-dream-app
+6. ng serve
+7. run the url at your browser (localhost:4200)
+8. OPen the folder of my-dream-app in VS Code
+9. src > app > app.component.html
+
+-->app.component.ts
+is variable
+
+--> install in terminal, then go to app.module.ts add import
+ng g component products
+ng g class product --> new class is new data type
+ng g service http (normally no "s" singular)
+
+what you define in product.ts in product.component.ts array shall be the same
+
+--> products.component.html
+*ngFor="let item of items" (let singular of plural) --> for loop
+*ngIf="selectedProduct" --> show only if product is selected 
+
+pipes angular
+| <-- "pipe" will format the left side with the formater of right side
+
+--> app.module.ts
+import { FormsModule } from "@angular/forms";
+@NgModule --> imports : [FormsModule] 
+
+import { HttpService } from "./http.service";
+@NgModule --> providers: [HttpService],
+
+import { HttpClientModule } from "@angular/common/http";
+@NgModule --> imports: [HttpClientModule],
+
+--> products.component.html
+[(ngModel)]="newTshirt.name" (to insert form)
+
+--> products.component.ts
+selectProduct(item) {
+    console.log(item);
+    this.selectedProduct = item;
+  }
+
+a service is an interface to retrieve data
+- localstorage
+- API
+- firewall
+
+--> http.service.ts
+1. import { HttpClient } from "@angular/common/http";
+2. export class HttpService {
+  constructor(public httpClient: HttpClient) {}
+3. getProduct() {
+    return this.httpClient.get("https://reqres.in/api/products");
+  }
+}
+
+. one is current folder
+.. two is next folder
+array must has "s"
+
+5 + 2 data type
+1. string
+2. number
+3. boolean
+4. array
+5. object
+
+-----> API
+-->weather.component.ts, then go to http.service.ts
+btnPressed() {
+    this.httpService.getWeather(this.city).subscribe(  --> add "this.city"
+      resp => {
+        console.log(resp);
+        this.weathers = resp["list"];
+      }
+    }
+
+--> http.service.ts
+getWeather(city) { --> add "city"
+    return this.httpClient.get(
+      "http://api.openweathermap.org/data/2.5/forecast/daily?q=" +
+        city +
+        "&cnt=10&appId=9fd7a449d055dba26a982a3220f32aa2"          --> change URL to +city+
+    );
+  }
+
+1. http.service.ts -> getPlaces
+2. dashboards.component.ts -> export "place" & ngOnInit
+3. dashboards.component.html -> *ngFor="let place of places"
+
+------->router
+-->app-routing.module.ts, then go to app.component.html
+import { ProductsComponent } from "./products/products.component";
+import { AboutComponent } from "./about/about.component";
+import { ContactComponent } from "./contact/contact.component";
+import { ProductDetailComponent } from "./product-detail/product-detail.component";
+
+const routes: Routes = [
+  {
+    path: "products",
+    component: ProductsComponent
+  },
+  {
+    path: "about",
+    component: AboutComponent
+  },
+  {
+    path: "contact",
+    component: ContactComponent
+  },
+  {
+    path: "product-detail",
+    component: ProductDetailComponent
+  }
+];
+
+--> app.component.html
+<ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/products">Product</a></li>
+    <li><a routerLink="/about">About</a></li>
+    <li><a routerLink="/contact">Contact</a></li>
+  </ul>
+
+--> install in terminal, then go to product.service.ts add import
+ng g service product
+
+--> after add product.service.ts, go to product.component.ts
+import { ProductService } from "../product.service";
+constructor(
+    public productService: ProductService
+  ) {}
+ngOnInit() {
+    this.items = this.productService.getProducts();
+  }
+
+--> back to product.service.ts
+ getProductById(id) {
+    for (var i = 0; i < this.items.length; i++) {
+      if (this.items[i]["id"] === id) {
+        return this.items[i];
+      }
+    }
+    return null;
+  }
+
+--> go to product-detail.componen<!-- <tr *ngIf="selectedPlace">
+                    <td>{{ selectedPlace.name }}</td>
+                    <td></td>
+                    <td></td>
+                  </tr> -->
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr> active the route)
+import { ActivatedRoute } from "@<!-- <tr *ngIf="selectedPlace">
+                    <td>{{ selectedPlace.name }}</td>
+                    <td></td>
+                    <td></td>
+                  </tr> -->
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>router";
+import { ProductService } from ".<!-- <tr *ngIf="selectedPlace">
+                    <td>{{ selectedPlace.name }}</td>
+                    <td></td>
+                    <td></td>
+                  </tr> -->
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>t.service";
+constructor(
+    public route: ActivatedRoute,<!-- <tr *ngIf="selectedPlace">
+                    <td>{{ selectedPlace.name }}</td>
+                    <td></td>
+                    <td></td>
+                  </tr> -->
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+    public productService: ProductService
+  ) {}
+ngOnInit() {
+    this.route.params.subscribe(params => {
+      console.log(params["id"]);
+      this.selectedProduct.getProductById(params["id"]);
+    });
+  }
+
+
+-->weather.component.html
+<tr *ngFor="let weather of weathers" (click)="weatherPressed(weather)">
+<div *ngIf="selectedWeather">{{ selectedWeather.dt }}</div>
+
+-->weather.component.ts
+export class WeatherComponent implements OnInit {
+  selectedWeather
+ weatherPressed(weather){
+    this.selectedWeather = weather
+
+
+style -> CSS
+link & script -> index.html
