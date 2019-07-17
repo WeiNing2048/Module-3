@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>My Weather Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar
+    [(ngModel)]="searchTerm"
+    (ionChange)="searchChanged()"
+  ></ion-searchbar>
+
+  <ion-list>
+    <ion-item
+      button
+      *ngFor="let item of results"
+      [routerLink]="['/', 'weathers', item.city]"
+    >
+      <ion-avatar slot="start">
+        <img
+          src="https://openweathermap.org/img/wn/{{
+            item.weather[0].icon
+          }}@2x.png"
+        />
+      </ion-avatar>
+      <ion-label text-wrap>
+        <h3>{{ item.dt * 1000 | date }}</h3>
+        <h3>{{ item.weather[0].main }}</h3>
+        <h3>{{ item.temp.eve - 273.15 | number: "0.2-2" }}&deg;C</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

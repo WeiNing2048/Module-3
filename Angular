@@ -150,47 +150,11 @@ ngOnInit() {
     return null;
   }
 
---> go to product-detail.componen<!-- <tr *ngIf="selectedPlace">
-                    <td>{{ selectedPlace.name }}</td>
-                    <td></td>
-                    <td></td>
-                  </tr> -->
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr> active the route)
-import { ActivatedRoute } from "@<!-- <tr *ngIf="selectedPlace">
-                    <td>{{ selectedPlace.name }}</td>
-                    <td></td>
-                    <td></td>
-                  </tr> -->
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>router";
-import { ProductService } from ".<!-- <tr *ngIf="selectedPlace">
-                    <td>{{ selectedPlace.name }}</td>
-                    <td></td>
-                    <td></td>
-                  </tr> -->
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>t.service";
+--> go to product-detail.component(active the route)
+import { ActivatedRoute } from "@angular/router";
+import { ProductService } from "./product.service";
 constructor(
-    public route: ActivatedRoute,<!-- <tr *ngIf="selectedPlace">
-                    <td>{{ selectedPlace.name }}</td>
-                    <td></td>
-                    <td></td>
-                  </tr> -->
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+    public route: ActivatedRoute,
     public productService: ProductService
   ) {}
 ngOnInit() {

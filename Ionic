@@ -96,3 +96,40 @@ closePressed() {
 path: "detail/:id",
 4. --> detail.page.html
 card--> big image + description, routerlink
+
+--> data.service.ts, then home.page.ts
+move all todos in service (copy todos = [] from home.page.ts to data.service.ts)
+addItem
+getAllItems
+getByID
+deleteItem
+markItemDone
+
+Call it
+
+-->home.page.ts
+import { DataService } from "../data.service";
+constructor(public dataService: DataService){}
+ngOnInit() {
+    this.todos = this.dataService.getAllItems();
+  }
+ async presentModal() {
+    this.dataService.addItem(data);
+  }
+
+-->detail.page.ts
+import { DataService } from "../data.service";
+import { ActivatedRoute } from "@angular/router";
+constructor(public dataService: DataService, public route: ActivatedRoute) {}
+ngOnInit() {
+    this.route.params.subscribe(params => {
+      let id = params["id"];
+      console.log(id);
+      this.item = this.dataService.getItemByID(id);
+      console.log(this.item);
+    });
+  }
+
+-->detail.page.html
+<ion-card *ngIf="item">
+{{ item.place }} {{ item.name }} {{ item.description }}
