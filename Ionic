@@ -133,3 +133,25 @@ ngOnInit() {
 -->detail.page.html
 <ion-card *ngIf="item">
 {{ item.place }} {{ item.name }} {{ item.description }}
+
+
+sudo chmod -R 777 --> if VS code prompt for sudo pswd
+
+
+--------Camera--------------
+1. import { Camera } from "@ionic-native/camera/ngx";
+import { PhotoLibrary } from "@ionic-native/photo-library/ngx";
+import { SocialSharing } from "@ionic-native/social-sharing/ngx";
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
+
+2. home.page.ts ->
+destinationType: this.camera.DestinationType.DATA_URL,
+ this.camera.getPicture(options).then(
+      imageData => {
+        this.image = "data:image/jpeg;base64," + imageData;
+      },
+      err => {
+      }
+    );
+4. ionic serve --devapp (sync with phone DevApp)
+5. 

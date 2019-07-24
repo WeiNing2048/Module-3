@@ -1,6 +1,6 @@
-import { WeatherService } from "../weather.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { WeatherService } from "../weather.service";
 
 @Component({
   selector: "app-weather-details",
@@ -8,17 +8,16 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./weather-details.page.scss"]
 })
 export class WeatherDetailsPage implements OnInit {
-  information = null;
-
+  city;
+  weather;
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private weatherService: WeatherService
+    public activatedRoute: ActivatedRoute,
+    public weatherService: WeatherService
   ) {}
 
   ngOnInit() {
-    let id = this.activatedRoute.snapshot.paramMap.get("id");
-    this.weatherService.getDetails(id).subscribe(result => {
-      this.information = result;
-    });
+    let timestamp = this.activatedRoute.snapshot.paramMap.get("timestamp");
+    this.city = this.activatedRoute.snapshot.paramMap.get("city");
+    this.weather = this.weatherService.getWeatherByTimestamp(timestamp);
   }
 }

@@ -1,7 +1,29 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>weatherDetails</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Weather Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-card *ngIf="weather">
+    <img
+      src="https://openweathermap.org/img/wn/{{
+        weather.weather[0].icon
+      }}@2x.png"
+      height="520px"
+    />
+    <ion-card-header>
+      <ion-card-subtitle>{{ city }}</ion-card-subtitle>
+      <ion-card-title>{{
+        weather.temp.day - 273.15 | number: "0.2-2"
+      }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ weather.humidity }}</p>
+      <p>{{ weather.pressure }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

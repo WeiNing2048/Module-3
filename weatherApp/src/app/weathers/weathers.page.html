@@ -11,11 +11,9 @@
   ></ion-searchbar>
 
   <ion-list>
-    <ion-item
-      button
-      *ngFor="let item of results"
-      [routerLink]="['/', 'weathers', item.city]"
-    >
+    <ion-item button *ngFor="let item of results" (click)="openDetail(item)">
+      <!-- [routerLink]="['/', 'weather-details', item.dt, place.name]" -->
+      <!-- only need ngFor only if Array, if Object then no need -->
       <ion-avatar slot="start">
         <img
           src="https://openweathermap.org/img/wn/{{
@@ -26,7 +24,7 @@
       <ion-label text-wrap>
         <h3>{{ item.dt * 1000 | date }}</h3>
         <h3>{{ item.weather[0].main }}</h3>
-        <h3>{{ item.temp.eve - 273.15 | number: "0.2-2" }}&deg;C</h3>
+        <h3>{{ item.temp.day - 273.15 | number: "0.2-2" }}&deg;C</h3>
       </ion-label>
     </ion-item>
   </ion-list>

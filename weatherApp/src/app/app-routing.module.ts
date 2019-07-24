@@ -9,7 +9,7 @@ const routes: Routes = [
     loadChildren: "./weathers/weathers.module#WeathersPageModule"
   },
   {
-    path: "weathers/:id",
+    path: "weather-details/:timestamp/:city",
     loadChildren:
       "./weather-details/weather-details.module#WeatherDetailsPageModule"
   }

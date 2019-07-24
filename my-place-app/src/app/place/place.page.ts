@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { PlaceService } from "../place.service";
 
 @Component({
   selector: "app-place",
@@ -6,34 +7,18 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./place.page.scss"]
 })
 export class PlacePage implements OnInit {
-  places = [
-    {
-      id: 1,
-      name: "Legoland",
-      stars: 3,
-      description:
-        "Themed rooms in a colourful lodging with 2 restaurants, an outdoor pool & kids' play areas.",
-      logo: "assets/Legoland-Malaysia.jpg"
-    },
+  places = [];
+  constructor(public placeService: PlaceService) {}
 
-    {
-      id: 2,
-      name: "Sanrio Hello Kitty Town",
-      rating: "",
-      description:
-        "Hello Kitty amusement park with a playground, a Kitty House, craft activities & live entertainment",
-      logo: "assets/hello-kitty-land.jpg"
-    },
-
-    {
-      id: 3,
-      name: "The Old Temple Of Johor Bahru",
-      rating: "",
-      description: "Vibrant temple built in the 19th century",
-      logo: "assets/Old-Temple.jpg"
-    }
-  ];
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.placeService.getPlaces().subscribe(
+      resp => {
+        console.log(resp);
+        this.places = resp["list"];
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 }

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      My Camera
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-button color="primary" expand="full" (click)="cameraPressed()"
+      >Take Picture</ion-button
+    >
+    <ion-button color="success" expand="full" (click)="libraryPressed()"
+      >Take From Library</ion-button
+    >
+    <ion-button color="light" expand="full" (click)="sharePressed()"
+      >Share</ion-button
+    >
+    <ion-button color="danger" expand="full" (click)="openIAB()"
+      >Browser</ion-button
+    >
+    <img src="{{ image }}" />
+  </div>
+</ion-content>
