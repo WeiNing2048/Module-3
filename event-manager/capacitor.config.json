@@ -1,0 +1,7 @@
+{
+  "appId": "com.wennie.eventManager",
+  "appName": "event-manager",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
