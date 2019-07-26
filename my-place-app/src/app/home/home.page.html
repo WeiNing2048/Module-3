@@ -1,15 +1,10 @@
-<ion-header> </ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Welcome to my place app</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
-  <ion-fab vertical="center" horizontal="center" slot="fixed">
-    <ion-fab-button color="secondary" style="size: 200px"
-      >Welcome to My Place</ion-fab-button
-    >
-    <ion-fab-list side="start">
-      <ion-button routerLink="/login">Login</ion-button>
-    </ion-fab-list>
-    <ion-fab-list side="end">
-      <ion-button routerLink="/register">Register</ion-button>
-    </ion-fab-list>
-  </ion-fab>
+  <ion-button routerLink="/login">Login</ion-button>
+  <ion-button routerLink="/register">Register</ion-button>
 </ion-content>

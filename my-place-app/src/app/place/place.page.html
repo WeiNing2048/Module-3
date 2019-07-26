@@ -1,17 +1,22 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-title>Place & Discovery</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let place of places" routerLink="/detail/{{ place.id }}">
-      <ion-avatar slot="start">
+    <ion-item
+      button
+      *ngFor="let place of places; let i = index"
+      routerLink="/detail/{{ place._id }}"
+    >
+      <!-- <ion-avatar slot="start">
         <img src="{{ place.logo }}" />
-      </ion-avatar>
-      <ion-label>
+      </ion-avatar> -->
+      <ion-label text-wrap>
         <h2>{{ place.name }}</h2>
+        <p>{{ place.country }}</p>
         <p>{{ place.description }}</p></ion-label
       >
     </ion-item>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Place Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="item">
+    <ion-card-header>
+      <ion-card-title>{{ item.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ item.country }}</p>
+      <p>{{ item.description }}</p>
+    </ion-card-content>
+    <ion-button fill="outline" slot="end" routerLink="/add-review"
+      >Add Review</ion-button
+    >
+  </ion-card>
+</ion-content>

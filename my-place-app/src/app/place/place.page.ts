@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PlaceService } from "../place.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-place",
@@ -7,14 +8,14 @@ import { PlaceService } from "../place.service";
   styleUrls: ["./place.page.scss"]
 })
 export class PlacePage implements OnInit {
-  places = [];
-  constructor(public placeService: PlaceService) {}
+  places;
+  constructor(public placeService: PlaceService, public router: Router) {}
 
   ngOnInit() {
     this.placeService.getPlaces().subscribe(
       resp => {
         console.log(resp);
-        this.places = resp["list"];
+        this.places = resp;
       },
       err => {
         console.log(err);
