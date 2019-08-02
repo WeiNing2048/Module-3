@@ -9,6 +9,7 @@ import { PlaceService } from "../place.service";
 })
 export class DetailPage implements OnInit {
   item;
+  reviews;
   constructor(
     public route: ActivatedRoute,
     public placeService: PlaceService
@@ -21,5 +22,17 @@ export class DetailPage implements OnInit {
       this.item = this.placeService.getPlaceByID(id);
       console.log(this.item);
     });
+  }
+
+  showAllReview() {
+    this.placeService.getReview().subscribe(
+      resp => {
+        console.log(resp);
+        this.reviews = resp;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }

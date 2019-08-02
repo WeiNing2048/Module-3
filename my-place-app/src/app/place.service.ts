@@ -8,6 +8,7 @@ import { tap } from "rxjs/operators";
 export class PlaceService {
   places;
   id;
+  reviews;
   constructor(public httpClient: HttpClient) {}
   getPlaces() {
     return this.httpClient
@@ -25,6 +26,18 @@ export class PlaceService {
       .pipe(
         tap(resp => {
           this.id = resp;
+        })
+      );
+  }
+
+  getReview() {
+    return this.httpClient
+      .get(
+        "http://wanmuz-rest-api-week5.herokuapp.com/api/places/5bec1f501f442923601a9aae/reviews"
+      )
+      .pipe(
+        tap(resp => {
+          this.reviews = resp;
         })
       );
   }

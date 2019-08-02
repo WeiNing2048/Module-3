@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Place Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -12,9 +15,18 @@
     <ion-card-content>
       <p>{{ item.country }}</p>
       <p>{{ item.description }}</p>
+      <ion-button fill="outline" slot="end" routerLink="/add-review"
+        >Add Review</ion-button
+      >
     </ion-card-content>
-    <ion-button fill="outline" slot="end" routerLink="/add-review"
-      >Add Review</ion-button
-    >
+
+    <ion-item>
+      <ion-button (click)="(showAllReview)">Show all review</ion-button>
+      <ion-label text-wrap>
+        <h2>{{ reviews.username }}</h2>
+        <p>{{ reviews.rating }}</p>
+        <p>{{ reviews.reviewText }}</p>
+      </ion-label>
+    </ion-item>
   </ion-card>
 </ion-content>
