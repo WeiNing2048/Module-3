@@ -9,13 +9,17 @@
 
 <ion-content>
   <ion-item>
-    <ion-label position="floating">Login Name</ion-label>
-    <ion-input placeholder=""></ion-input>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Password</ion-label>
-    <ion-input placeholder="" type="Password"></ion-input>
+    <ion-input
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+    ></ion-input>
   </ion-item>
-  <ion-button color="success" (click)="loginPost()">Login</ion-button>
+  <ion-button color="success" (click)="loginPressed()">Login</ion-button>
 </ion-content>

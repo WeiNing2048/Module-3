@@ -8,19 +8,18 @@ import { PlaceService } from "../place.service";
   styleUrls: ["./detail.page.scss"]
 })
 export class DetailPage implements OnInit {
-  item;
   reviews;
+  place;
   constructor(
     public route: ActivatedRoute,
     public placeService: PlaceService
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      let id = params["id"];
-      console.log(id);
-      this.item = this.placeService.getPlaceByID(id);
-      console.log(this.item);
+    let id = this.route.snapshot.paramMap.get("place_id");
+    this.placeService.getPlaceByID(id).subscribe(resp => {
+      this.place = resp;
+      console.log(this.place);
     });
   }
 

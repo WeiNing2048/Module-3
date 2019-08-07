@@ -14,19 +14,23 @@
     </ion-label>
   </ion-item-divider>
   <ion-item>
-    <ion-label position="floating">Login Name</ion-label>
-    <ion-input></ion-input>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Password</ion-label>
-    <ion-input type="Password"></ion-input>
+    <ion-input
+      type="Password"
+      [(ngModel)]="password"
+      name="password"
+    ></ion-input>
   </ion-item>
-  <ion-item>
+  <!-- <ion-item>
     <ion-label position="floating">Retype Password</ion-label>
     <ion-input type="Password"></ion-input>
-  </ion-item>
+  </ion-item> -->
 
-  <ion-item-divider color="secondary">
+  <!-- <ion-item-divider color="secondary">
     <ion-label>
       Personal Details
     </ion-label>
@@ -65,6 +69,6 @@
   <ion-item margin="10px" position="stacked">
     <ion-checkbox slot="start"></ion-checkbox>
     <ion-label>I am not a robot</ion-label>
-  </ion-item>
-  <ion-button color="success" (click)="registerPost()">Register</ion-button>
+  </ion-item> -->
+  <ion-button color="success" (click)="signupPressed()">Register</ion-button>
 </ion-content>

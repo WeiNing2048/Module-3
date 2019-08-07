@@ -8,25 +8,36 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="item">
+  <ion-card *ngIf="place">
     <ion-card-header>
-      <ion-card-title>{{ item.name }}</ion-card-title>
+      <ion-card-title>{{ place?.name }}</ion-card-title>
+      <!-- "?" refer to if empty no error -->
     </ion-card-header>
     <ion-card-content>
-      <p>{{ item.country }}</p>
-      <p>{{ item.description }}</p>
-      <ion-button fill="outline" slot="end" routerLink="/add-review"
-        >Add Review</ion-button
-      >
+      <p>{{ place?.country }}</p>
+      <p>{{ place?.description }}</p>
     </ion-card-content>
-
-    <ion-item>
-      <ion-button (click)="(showAllReview)">Show all review</ion-button>
-      <ion-label text-wrap>
-        <h2>{{ reviews.username }}</h2>
-        <p>{{ reviews.rating }}</p>
-        <p>{{ reviews.reviewText }}</p>
-      </ion-label>
-    </ion-item>
+  </ion-card>
+  <ion-card>
+    <h3>Reviews</h3>
+    <ion-list>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img src="/assets/Legoland-Malaysia.jpg" />
+        </ion-thumbnail>
+        <ion-label text-wrap>
+          <h2>Email</h2>
+          <p>Rating</p>
+          <p>Comment</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-button
+      color="primary"
+      slot="end"
+      expand="full"
+      routerLink="/add-review"
+      >Add New Review</ion-button
+    >
   </ion-card>
 </ion-content>

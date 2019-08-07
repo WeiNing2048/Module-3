@@ -8,20 +8,23 @@
 </ion-header>
 
 <ion-content>
-  <form>
+  <ion-card>
     <ion-item>
-      <ion-label>Description</ion-label>
-      <textarea
-        class="form-control"
-        placeholder="Share details of your own experience at this place"
-        id="descriptions"
-        rows="3"
-        name="editor1"
-      ></textarea>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email"></ion-input>
     </ion-item>
-    <button type="button" class="btn btn-primary" (click)="addReviewPost()">
+
+    <ion-item>
+      <ion-label position="floating">Rating</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Comment</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+    <ion-button color="danger" (click)="addReviewPost()">
       <!-- ng-click="postdata(name, description, country)" -->
-      Save changes
-    </button>
-  </form>
+      Add Review
+    </ion-button>
+  </ion-card>
 </ion-content>

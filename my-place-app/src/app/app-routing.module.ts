@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   { path: "place", loadChildren: "./place/place.module#PlacePageModule" },
   {
-    path: "detail/:id",
+    path: "detail/:place_id",
     loadChildren: "./detail/detail.module#DetailPageModule"
   },
   {

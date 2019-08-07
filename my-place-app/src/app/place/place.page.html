@@ -8,12 +8,12 @@
   <ion-list>
     <ion-item
       button
-      *ngFor="let place of places; let i = index"
-      routerLink="/detail/{{ place._id }}"
+      *ngFor="let place of places"
+      [routerLink]="['/detail', place._id]"
     >
-      <!-- <ion-avatar slot="start">
-        <img src="{{ place.logo }}" />
-      </ion-avatar> -->
+      <ion-thumbnail slot="start">
+        <img src="/assets/Legoland-Malaysia.jpg" />
+      </ion-thumbnail>
       <ion-label text-wrap>
         <h2>{{ place.name }}</h2>
         <p>{{ place.country }}</p>
